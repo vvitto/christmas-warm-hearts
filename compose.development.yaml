@@ -1,0 +1,19 @@
+services:
+  pg14:
+    container_name: warm_heart_database
+    image: postgres:14.5-alpine3.16
+    command: postgres -p 5432 -c 'max_connections=200'
+    env_file: 
+      - .env.development
+    expose:
+      - "5432"
+    volumes:
+      - warm-heart-localpg-data:/var/lib/postgresql14/data
+
+volumes:
+  warm-heart-localpg-data:
+
+networks:
+  default:
+    name: warm-hearts
+    external: true
