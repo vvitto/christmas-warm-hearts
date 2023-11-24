@@ -9,6 +9,8 @@ services:
       - 3000:3000
     depends_on:
       - pg14
+    environment:
+      RAILS_ENV: production
     command: bin/bundle exec puma --log-requests
   pg14:
     container_name: warm_heart_database
