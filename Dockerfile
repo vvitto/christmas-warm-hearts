@@ -1,4 +1,4 @@
-FROM ruby:3.1.3-alpine3.17
+FROM ruby:3.1.3-alpine3.17 as base
 
 WORKDIR /usr/src/app
 
@@ -15,3 +15,7 @@ RUN apk add --no-cache gcompat tzdata postgresql-libs && \
 COPY . .
 
 CMD ["bin/bundle", "exec", "puma", "--log-requests"]
+
+FROM base as production
+
+RUN RAILS_ENV=production bundle exec rake assets:precompile
