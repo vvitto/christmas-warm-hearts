@@ -5,14 +5,14 @@
         <span class="home-logo">Зігрій ❤️ Воїна&nbsp;</span>
         <div data-thq="thq-navbar-nav" class="home-desktop-menu">
           <nav class="home-links">
-            <span class="home-nav3">Як долучитись?</span>
-            <span class="home-nav5">Спільнота</span>
+            <a href="#help" class="home-nav3">Як долучитись?</a>
+            <%# <span class="home-nav5">Спільнота</span> %>
           </nav>
           <div class="home-buttons">
-            <button class="home-register button">Швидкий донат</button>
-            <button type="button" class="home-button button">
+            <a href="https://send.monobank.ua/jar/AXJUwUfrU7" rel="nofollow" target="_blank" class="home-register button">Швидкий донат</a>
+            <a href="#letter" type="button" class="home-button button">
               Написати листа
-            </button>
+            </a>
           </div>
         </div>
         <div data-thq="thq-burger-menu" class="home-burger-menu">
@@ -35,12 +35,12 @@
               </div>
             </div>
             <nav class="home-links1">
-              <span class="home-nav4">Як я можу допомогти&nbsp;</span>
-              <span class="home-nav51">Спільнота</span>
+              <a href="#help" class="home-nav4">Як я можу допомогти&nbsp;</a>
+              <%# <span class="home-nav51">Спільнота</span> %>
             </nav>
             <div class="home-buttons1">
-              <button class="home-register button">Написати листа</button>
-              <button class="home-button button">Швидкий донат</button>
+              <a href="#letter" class="home-register button">Написати листа</a>
+              <a href="https://send.monobank.ua/jar/AXJUwUfrU7" rel="nofollow" target="_blank" class="home-button button">Швидкий донат</a>
             </div>
           </div>
         </div>
@@ -82,7 +82,7 @@
         <%= image_tag('home/header.jpg', class: 'home-details-image')%>
       </div>
     </div>
-    <div class="home-steps">
+    <div class="home-steps" id="help">
       <h1 class="home-text11">Як я можу допомогти?</h1>
       <span class="home-text12">Будь яка дія допоможе</span>
       <div class="home-container03">
@@ -197,26 +197,15 @@
         </span>
       </span>
       <div class="home-container16">
-        <img
-          src="https://play.teleporthq.io/static/svg/default-img.svg"
-          alt="image"
-          class="home-image"
-        />
-        <img
-          src="https://play.teleporthq.io/static/svg/default-img.svg"
-          alt="image"
-          class="home-image1"
-        />
-        <img
-          src="https://play.teleporthq.io/static/svg/default-img.svg"
-          alt="image"
-          class="home-image2"
-        />
-        <img
-          src="https://play.teleporthq.io/static/svg/default-img.svg"
-          alt="image"
-          class="home-image3"
-        />
+        <a href="https://makitra.ua/ua/termokruzhka-con-brio-364-cb-iz-nerzhaveyushhej-stali" rel="nofollow" target="_blank">
+          <%= image_tag('home/p1.jpg', class: 'home-image')%>
+        </a>
+        <a href="https://turkishammunition.com.ua/tproduct/430959197-837686237421-termoshuzi-termal-mest?fbclid=IwAR0lpopfNQ05TSa3BkSOM7pUoBkYd64hKSNCnXjorZmaJXyfP9gbFBXaNlo_aem_Acy33SckGu-Ff0i-4tg3DNki9J7ZXE33KbiC_tNmIHwV7kWxfC792XP2Rpn6t7IvfGDcrSho5-0NltUZn3rt41XO" rel="nofollow" target="_blank">
+          <%= image_tag('home/p3.jpg', class: 'home-image')%>
+        </a>
+        <a href="https://stockstroy.com/p1752874583-zimovi-taktichni-rukavichki.html" rel="nofollow" target="_blank">
+          <%= image_tag('home/p2.jpg', class: 'home-image')%>
+        </a>
       </div>
     </div>
     <div class="home-donate">
@@ -234,14 +223,14 @@
         </span>
       </span>
       <div class="home-btn-group">
-        <a href="https://send.monobank.ua/jar/AXJUwUfrU7" target="_blank" class="home-button1 button">
+        <a href="https://send.monobank.ua/jar/AXJUwUfrU7" rel="nofollow" target="_blank" class="home-button1 button">
           Посилання на банку Моно
         </a>
         <span class="home-text47">або</span>
-        <button class="home-button2 button">Реквізити Приват Банку</button>
+        <div class="home-button2 button" id="show_pb_number">Реквізити Приват Банку</div>
       </div>
     </div>
-    <div class="home-write">
+    <div class="home-write" id="letter">
       <h1 class="home-text48">Написати листа</h1>
       
       <div class="form-blocks">

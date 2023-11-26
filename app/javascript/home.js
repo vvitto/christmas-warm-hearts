@@ -1,6 +1,7 @@
 window.onload = function(){
   console.log('loaded')
   const formElem = document.getElementById("form_letter")
+  const pbButton = document.getElementById("show_pb_number")
 
   formElem.onsubmit = async (e) => {
     e.preventDefault();
@@ -20,4 +21,8 @@ window.onload = function(){
       alert(error)
     });
   };
+
+  pbButton.onclick = function () {
+    pbButton.innerHTML = "5168 7520 1327 7994";
+  }
 };
