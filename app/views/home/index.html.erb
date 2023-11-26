@@ -77,7 +77,7 @@
               <span></span>
             </span>
           </div>
-          <button class="home-hero-button1 button">Написати листа</button>
+          <button class="big-button top-home-button button">Написати листа</button>
         </div>
         <%= image_tag('home/header.jpg', class: 'home-details-image')%>
       </div>
@@ -246,9 +246,9 @@
             </div>
             <div class="home-container17">
               <input type="checkbox" class="home-checkbox" />
-              <label class="home-text50">Так, я задонатив</label>
+              <label class="home-text50">Так, я задонатив (не обовʼязково, але дуже важливо)</label>
             </div>
-            <%= form.submit 'Відправити', class:'home-hero-button1 button' %>
+            <%= form.submit 'Відправити', class:'letter-button big-button button', id: 'letter-button' %>
           <% end %> 
         </div>
         <div class="form-wrapper" id="letter_back_side" style="display: none;">

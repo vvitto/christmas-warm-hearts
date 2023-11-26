@@ -223,10 +223,21 @@
   line-height: 1.6;
   margin-bottom: var(--dl-space-space-twounits);
 }
-.home-hero-button1 {
-  color: var(--dl-color-white);
+.letter-button {
+  width: 100%;
+}
+.letter-button:disabled {
+  opacity: 0.6;
+}
+.letter-button:hover:disabled {
+  cursor: progress;
+}
+.top-home-button {
   width: 346px;
   max-width: 100%;
+}
+.big-button {
+  color: var(--dl-color-white);
   font-size: 18px;
   transition: 0.3s;
   font-weight: bold;
@@ -238,7 +249,7 @@
   background-color: var(--dl-color-blue-main);
   border-color: var(--dl-color-blue-main);
 }
-.home-hero-button1:hover {
+.big-button:hover {
   color: var(--dl-color-blue-main);
   border-color: var(--dl-color-blue-main);
   background-color: var(--dl-color-white);

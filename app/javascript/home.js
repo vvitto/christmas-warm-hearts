@@ -1,11 +1,10 @@
 window.onload = function(){
-  console.log('loaded')
   const formElem = document.getElementById("form_letter")
   const pbButton = document.getElementById("show_pb_number")
 
   formElem.onsubmit = async (e) => {
     e.preventDefault();
-    console.log('wow');
+    document.getElementById("letter-button").disabled = true;
     var url = formElem.getAttribute("action");
     var data =  new FormData(formElem);
     data.append("submit", "Submit");
