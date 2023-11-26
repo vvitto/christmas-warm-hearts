@@ -1,23 +1,42 @@
 window.onload = function(){
+  // request reCaptch token for current action
+  async function applyReCaptcha(fn) {
+    const rekey = document.getElementById("recaptcha_site_key").value;
+    grecaptcha.ready(async function() {
+      grecaptcha.execute(rekey, {action: 'submit'}).then(async function(token) {
+        document.getElementById("recaptcha_token").value = token;
+
+        fn();
+      });
+    });
+  }
+
   const formElem = document.getElementById("form_letter")
   const pbButton = document.getElementById("show_pb_number")
 
   formElem.onsubmit = async (e) => {
     e.preventDefault();
-    document.getElementById("letter-button").disabled = true;
-    var url = formElem.getAttribute("action");
-    var data =  new FormData(formElem);
-    data.append("submit", "Submit");
-    await fetch(url, { method: 'POST', body: data }).then((response) => {
-      if (response.status >= 400 && response.status < 600) {
-        throw new Error("Сталась помилка. Будь ласка надішли листа на warm_hearts@uncommercial.org");
-      }
-      return response;
-    }).then(() => {
-      document.getElementById("letter_front_side").style.display = "none";
-      document.getElementById("letter_back_side").style.display = "block";
-    }).catch((error) => {
-      alert(error)
+
+    applyReCaptcha(async function() {
+      document.getElementById("letter-button").disabled = true;
+      var url = formElem.getAttribute("action");
+      var data =  new FormData(formElem);
+      data.append("submit", "Submit");
+
+      await fetch(url, { method: 'POST', body: data }).then((response) => {
+        if (response.status >= 400 && response.status < 500) {
+          response.json().then((errors) => {
+            alert(errors[0]);
+          });
+        } else if (response.status >= 500 && response.status < 600) {
+          throw new Error("Сталась помилка. Будь ласка надішли листа на warm_hearts@uncommercial.org");
+        } else {
+          document.getElementById("letter_front_side").style.display = "none";
+          document.getElementById("letter_back_side").style.display = "block";
+        }
+      }).catch((error) => {
+        alert(error)
+      });
     });
   };
 
