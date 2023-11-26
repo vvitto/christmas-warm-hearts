@@ -25,7 +25,7 @@
         <div data-thq="thq-mobile-menu" class="home-mobile-menu">
           <div class="home-nav">
             <div class="home-top">
-              <span class="home-logo1">Зігрій&nbsp;❤️ Воїна</span>
+              <span class="home-logo1">Зігрій ❤️ Воїна&nbsp;</span>
               <div data-thq="thq-close-menu" class="home-close-menu">
                 <svg viewBox="0 0 1024 1024" class="home-icon02">
                   <path
@@ -39,8 +39,8 @@
               <span class="home-nav51">Спільнота</span>
             </nav>
             <div class="home-buttons1">
-              <button class="home-login button">Написати листа</button>
-              <button class="home-register1 button">Швидкий донат</button>
+              <button class="home-register button">Написати листа</button>
+              <button class="home-button button">Швидкий донат</button>
             </div>
           </div>
         </div>
@@ -234,30 +234,42 @@
         </span>
       </span>
       <div class="home-btn-group">
-        <button class="home-button1 button">
-          Посилання на банку Моно&nbsp;
-        </button>
-        <span class="home-text47">&nbsp;або</span>
+        <a href="https://send.monobank.ua/jar/AXJUwUfrU7" target="_blank" class="home-button1 button">
+          Посилання на банку Моно
+        </a>
+        <span class="home-text47">або</span>
         <button class="home-button2 button">Реквізити Приват Банку</button>
       </div>
     </div>
     <div class="home-write">
       <h1 class="home-text48">Написати листа</h1>
-      <span class="home-text49">
-        Кожне слово важливе. Твій лист буде перевірений перед друком та без
-        змін буде доданий до подарунку.
-      </span>
-      <textarea
-        placeholder="Привітайся, розповіси про себе та за що ти вдячен нашим захисникам..."
-        cols="60"
-        rows="20"
-        class="home-textarea textarea"
-      ></textarea>
-      <div class="home-container17">
-        <input type="checkbox" class="home-checkbox" />
-        <label class="home-text50">Так, я задонатив</label>
+      
+      <div class="form-blocks">
+        <div id="letter_front_side">
+          <%= form_for(@letter, 
+                url: url_for(controller: '/letters', action: 'create'),
+                as: :letter,
+                authenticity_token: true,
+                html: { method: :post, id: 'form_letter' }) do |form| %>
+
+            <div class="form-wrapper">
+              <%= form.text_area :letter_text, required: true, rows: 20, cols: 60, id: 'letter_text', class: 'home-textarea textarea', placeholder: 'Привітайся, розкажи про себе та за що ти вдячний нашим захисникам' %>
+            </div>
+            <div class="home-container17">
+              <input type="checkbox" class="home-checkbox" />
+              <label class="home-text50">Так, я задонатив</label>
+            </div>
+            <%= form.submit 'Відправити', class:'home-hero-button1 button' %>
+          <% end %> 
+        </div>
+        <div class="form-wrapper" id="letter_back_side" style="display: none;">
+          <div class="response-wrapper">
+            <h2>Дякую!</h2>
+            <p>Твій лист буде перевірений перед друком та без змін буде доданий до подарунку.</p>
+          </div>
+        </div>
       </div>
-      <button class="home-hero-button11 button">Відправити</button>
+      
     </div>
   </div>
 </div>
