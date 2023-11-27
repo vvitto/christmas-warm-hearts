@@ -7,11 +7,11 @@ class LettersController < ApplicationController
     @letter = Letter.new(letter_params)
 
     unless verify_recaptcha?(params[:recaptcha_token], 'submit')
-      @letter.errors.add(:base, "ReCpatcha validation failed, turn off Ad blocker")
+      render :bad_request
     end
 
     respond_to do |format|
-      if @letter.errors.empty? && @letter.save
+      if @letter.save
         format.json { render json: {}, status: :ok }
       else
         format.js { render json: @letter.errors.full_messages, status: :bad_request }

@@ -830,6 +830,16 @@
   height: 300px;
 }
 
+div#error_container {
+  margin: 25px;
+  color: var(--dl-color-danger-500);
+}
+
+.focus-link {
+  text-decoration: underline;
+  color: var(--dl-color-gray-black);
+}
+
 @media(max-width: 1200px) {
   .home-container01 {
     width: 50%;

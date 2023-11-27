@@ -31,7 +31,7 @@ window.onload = function(){
             alert(errors[0]);
           });
         } else if (response.status >= 500 && response.status < 600) {
-          throw new Error("Сталась помилка. Будь ласка надішли листа на warm_hearts@uncommercial.org");
+          document.getElementById("error_container").style.display = "block";
         } else {
           document.getElementById("letter_front_side").style.display = "none";
           document.getElementById("letter_back_side").style.display = "block";
