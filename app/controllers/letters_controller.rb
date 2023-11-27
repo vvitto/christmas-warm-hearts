@@ -28,8 +28,10 @@ class LettersController < ApplicationController
   def verify_recaptcha?(token, recaptcha_action)
     secret_key = Rails.configuration.recaptcha[:recaptcha_secret_key]
     uri = URI.parse("https://www.google.com/recaptcha/api/siteverify?secret=#{secret_key}&response=#{token}")
+    Rails.logger.info("Verufy reCAPTCHA uri = #{uri}")
     response = Net::HTTP.get_response(uri)
     json = JSON.parse(response.body)
+    Rails.logger.info("Verify reCAPTCHA response = #{json}")
 
     json['success'] && json['score'] > RECAPTCHA_MINIMUM_SCORE && json['action'] == recaptcha_action
   end
