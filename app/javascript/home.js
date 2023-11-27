@@ -26,11 +26,7 @@ window.onload = function(){
       fetch(url, {
 	      method: 'POST', body: data
       }).then((response) => {
-        if (response.status >= 400 && response.status < 500) {
-          response.json().then((errors) => {
-            alert(errors[0]);
-          });
-        } else if (response.status >= 500 && response.status < 600) {
+        if (response.status >= 400 && response.status < 600) {
           document.getElementById("error_container").style.display = "block";
         } else {
           document.getElementById("letter_front_side").style.display = "none";

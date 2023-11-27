@@ -6,15 +6,11 @@ class LettersController < ApplicationController
   def create
     @letter = Letter.new(letter_params)
 
-    unless verify_recaptcha?(params[:recaptcha_token], 'submit')
-      render :bad_request
-    end
-
     respond_to do |format|
-      if @letter.save
+      if verify_recaptcha?(params[:recaptcha_token], 'submit') && @letter.save
         format.json { render json: {}, status: :ok }
       else
-        format.js { render json: @letter.errors.full_messages, status: :bad_request }
+        format.json { render json: {}, status: :bad_request }
       end
     end
   end
@@ -28,7 +24,6 @@ class LettersController < ApplicationController
   def verify_recaptcha?(token, recaptcha_action)
     secret_key = Rails.configuration.recaptcha[:recaptcha_secret_key]
     uri = URI.parse("https://www.google.com/recaptcha/api/siteverify?secret=#{secret_key}&response=#{token}")
-    Rails.logger.info("Verufy reCAPTCHA uri = #{uri}")
     response = Net::HTTP.get_response(uri)
     json = JSON.parse(response.body)
     Rails.logger.info("Verify reCAPTCHA response = #{json}")
