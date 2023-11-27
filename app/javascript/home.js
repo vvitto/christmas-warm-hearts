@@ -1,9 +1,9 @@
 window.onload = function(){
   // request reCaptch token for current action
-  async function applyReCaptcha(fn) {
+  function applyReCaptcha(fn) {
     const rekey = document.getElementById("recaptcha_site_key").value;
-    grecaptcha.ready(async function() {
-      grecaptcha.execute(rekey, {action: 'submit'}).then(async function(token) {
+    grecaptcha.ready(function() {
+      grecaptcha.execute(rekey, {action: 'submit'}).then(function(token) {
         document.getElementById("recaptcha_token").value = token;
 
         fn();
@@ -14,16 +14,18 @@ window.onload = function(){
   const formElem = document.getElementById("form_letter")
   const pbButton = document.getElementById("show_pb_number")
 
-  formElem.onsubmit = async (e) => {
+  formElem.onsubmit = (e) => {
     e.preventDefault();
 
-    applyReCaptcha(async function() {
+    applyReCaptcha(function() {
       document.getElementById("letter-button").disabled = true;
       var url = formElem.getAttribute("action");
       var data =  new FormData(formElem);
       data.append("submit", "Submit");
 
-      await fetch(url, { method: 'POST', body: data }).then((response) => {
+      fetch(url, {
+	      method: 'POST', body: data
+      }).then((response) => {
         if (response.status >= 400 && response.status < 500) {
           response.json().then((errors) => {
             alert(errors[0]);
