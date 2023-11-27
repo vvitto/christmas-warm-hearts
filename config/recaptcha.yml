@@ -1,7 +1,7 @@
 shared:
-  recaptcha_site_key: 6LdPTB0pAAAAAD_xaweIc1H1a4QGqRp2WHL5_wRh
-  recaptcha_secret_key: 6LdPTB0pAAAAAKxKVwoz_n-jf2uFlVZhHyK50kdC
+  recaptcha_site_key: <%= ENV.fetch('RECAPTCHA_SITE_KEY') %>
+  recaptcha_secret_key: <%= ENV.fetch('RECAPTCHA_SECRET_KEY') %>
 
 production:
-  recaptcha_site_key: <%= ENV['RECAPTCHA_SITE_KEY'] %>
-  recaptcha_secret_key: <%= ENV['RECAPTCHA_SECRET_KEY'] %>
+  recaptcha_site_key: <%= ENV.fetch('RECAPTCHA_SITE_KEY') %>
+  recaptcha_secret_key: <%= ENV.fetch('RECAPTCHA_SECRET_KEY') %>
