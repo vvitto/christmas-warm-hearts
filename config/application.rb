@@ -35,5 +35,6 @@ module WarmHearts
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.recaptcha = config_for(:recaptcha)
   end
 end

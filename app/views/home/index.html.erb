@@ -235,22 +235,9 @@
       
       <div class="form-blocks">
         <div id="letter_front_side">
-          <%= form_for(@letter, 
-                url: url_for(controller: '/letters', action: 'create'),
-                as: :letter,
-                authenticity_token: true,
-                html: { method: :post, id: 'form_letter' }) do |form| %>
-
-            <div class="form-wrapper">
-              <%= form.text_area :letter_text, required: true, rows: 20, cols: 60, id: 'letter_text', class: 'home-textarea textarea', placeholder: 'Привітайся, розкажи про себе та за що ти вдячний нашим захисникам' %>
-            </div>
-            <div class="home-container17">
-              <input type="checkbox" class="home-checkbox" />
-              <label class="home-text50">Так, я задонатив (не обовʼязково, але дуже важливо)</label>
-            </div>
-            <%= form.submit 'Відправити', class:'letter-button big-button button', id: 'letter-button' %>
-          <% end %> 
+          <%= render "form" %>
         </div>
+
         <div class="form-wrapper" id="letter_back_side" style="display: none;">
           <div class="response-wrapper">
             <h2>Дякую!</h2>
