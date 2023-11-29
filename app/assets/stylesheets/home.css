@@ -235,6 +235,7 @@
 .top-home-button {
   width: 346px;
   max-width: 100%;
+  text-align: center;
 }
 .big-button {
   color: var(--dl-color-white);
