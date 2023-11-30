@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "home#index"
+  get "privacy" => "privacy#index"
 
   resources :letters, only: [:create]
 end
