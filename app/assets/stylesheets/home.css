@@ -1319,3 +1319,24 @@ div#error_container {
     margin-bottom: var(--dl-space-space-oneandhalfunits);
   }
 }
+
+.policy-details {
+  display: flex;
+  padding: 30px 0;
+  flex-grow: 1;
+  flex-direction: column;
+  gap: 10px;
+  font-family: "Raleway";
+  width: 90%;
+  max-width: var(--dl-size-size-maxwidth);
+}
+
+.policy-details ol {
+  list-style-type: none;
+  margin: 0;
+  padding: 0 0 0 16px;
+}
+
+.policy-details li {
+  margin-bottom: 5px;
+}
